@@ -7,8 +7,7 @@
 </template>
 
 <script>
-  
-import PxHeader from './components/PxHeader.vue';
+import PxHeader from "./components/PxHeader.vue";
 
 export default {
   name: "App",
