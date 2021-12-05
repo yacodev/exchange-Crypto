@@ -4,9 +4,7 @@
       <div class="flex flex-col sm:flex-row justify-around items-center">
         <div class="flex flex-col items-center">
           <img
-            :src="
-              `https://static.coincap.io/assets/icons/${asset.symbol.toLowerCase()}@2x.png`
-            "
+            :src="`https://static.coincap.io/assets/icons/${asset.symbol.toLowerCase()}@2x.png`"
             :alt="asset.name"
             class="w-20 h-20 mr-5"
           />
@@ -48,7 +46,9 @@
         <div class="my-10 sm:mt-0 flex flex-col justify-center text-center">
           <button
             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-          >Cambiar</button>
+          >
+            Cambiar
+          </button>
 
           <div class="flex flex-row my-5">
             <label class="w-full" for="convertValue">
@@ -68,40 +68,40 @@
 </template>
 
 <script>
-import api from '@/api'
+import api from "@/api";
 
 export default {
-  name: 'CoinDetail',
+  name: "CoinDetail",
 
   data() {
     return {
       asset: {},
-      history: []
-    }
+      history: [],
+    };
   },
 
   computed: {
     min() {
       return Math.min(
-        ...this.history.map(h => parseFloat(h.priceUsd).toFixed(2))
-      )
+        ...this.history.map((h) => parseFloat(h.priceUsd).toFixed(2))
+      );
     },
 
     max() {
       return Math.max(
-        ...this.history.map(h => parseFloat(h.priceUsd).toFixed(2))
-      )
+        ...this.history.map((h) => parseFloat(h.priceUsd).toFixed(2))
+      );
     },
 
     avg() {
       return Math.abs(
-        ...this.history.map(h => parseFloat(h.priceUsd).toFixed(2))
-      )
-    }
+        ...this.history.map((h) => parseFloat(h.priceUsd).toFixed(2))
+      );
+    },
   },
 
   created() {
-    this.getCoin()
+    this.getCoin();
   },
 
   methods: {
@@ -110,13 +110,13 @@ export default {
 
       Promise.all([api.getAsset(id), api.getAssetHistory(id)]).then(
         ([asset, history]) => {
-          this.asset = asset
-          this.history = history
+          this.asset = asset;
+          this.history = history;
         }
-      )
-    }
-  }
-}
+      );
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -125,4 +125,3 @@ td {
   text-align: center;
 }
 </style>
-
