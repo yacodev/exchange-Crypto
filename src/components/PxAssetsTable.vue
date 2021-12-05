@@ -26,17 +26,17 @@
             :alt="a.name"
           />
         </td>
-        <td>
+        <td> 
           <strong> #{{ a.rank }} </strong>
         </td>
         <td>
           {{ a.name }}
         </td>
         <td>
-          {{ a.priceUsd | dolar }}
+          {{ a.priceUsd | dollar }}
         </td>
         <td>
-          {{ a.marketCapUsd | dolar }}
+          {{ a.marketCapUsd | dollar }}
         </td>
         <td
           :class="
