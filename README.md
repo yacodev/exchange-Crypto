@@ -1,4 +1,6 @@
-# exchallenge
+# exchange
+This app shows the price of cryptocurrencies 
+
 
 ## Project setup
 ```
