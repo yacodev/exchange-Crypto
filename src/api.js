@@ -1,7 +1,7 @@
 const url = "https://api.coincap.io/v2/assets?limit=20";
 const url_base = "https://api.coincap.io/v2";
 
-function getAssets() {
+async function getAssets() {
   return fetch(`${url}`, {
     mode: "cors",
     method: "GET",
@@ -10,7 +10,7 @@ function getAssets() {
     .then((res) => res.data);
 }
 
-function getAsset(coin) {
+async function getAsset(coin) {
   return fetch(`${url_base}/assets/${coin}`, {
     mode: "cors",
     method: "GET",
@@ -19,7 +19,7 @@ function getAsset(coin) {
     .then((res) => res.data);
 }
 
-function getAssetHistory(coin) {
+async function getAssetHistory(coin) {
   const now = new Date();
   const end = now.getTime();
   now.setDate(now.getDate() - 1);
@@ -32,8 +32,22 @@ function getAssetHistory(coin) {
     .then((res) => res.data);
 }
 
+async function getMarkets(coin) {
+  return fetch(`${url_base}/assets/${coin}/markets?limit=5`)
+    .then((res) => res.json())
+    .then((res) => res.data);
+}
+
+async function getExchange(id) {
+  return fetch(`${url}/exchanges/${id}`)
+    .then((res) => res.json())
+    .then((res) => res.data);
+}
+
 export default {
   getAssets,
   getAsset,
   getAssetHistory,
+  getMarkets,
+  getExchange,
 };

@@ -66,11 +66,12 @@
           <span class="text-xl"></span>
         </div>
       </div>
-      <line-chart class="my-10"
+      <line-chart
+        class="my-10"
         :colors="['orange']"
         :min="min"
         :max="max"
-        :data="history.map(h=>[h.date, parseFloat(h.priceUsd).toFixed(2)])"
+        :data="history.map((h) => [h.date, parseFloat(h.priceUsd).toFixed(2)])"
       />
     </template>
   </div>
@@ -118,13 +119,12 @@ export default {
     getCoin() {
       const id = this.$route.params.id;
       this.isLoading = true;
-      Promise.all([api.getAsset(id), api.getAssetHistory(id)]).then(
-        ([asset, history]) => {
+      Promise.all([api.getAsset(id), api.getAssetHistory(id)])
+        .then(([asset, history]) => {
           this.asset = asset;
           this.history = history;
-        }
-      )
-      .finally(()=> this.isLoading = false);
+        })
+        .finally(() => (this.isLoading = false));
     },
   },
 };
