@@ -3,7 +3,6 @@ const url_base = "https://api.coincap.io/v2";
 
 async function getAssets() {
   return fetch(`${url}`, {
-    mode: "cors",
     method: "GET",
   })
     .then((res) => res.json())
@@ -12,7 +11,6 @@ async function getAssets() {
 
 async function getAsset(coin) {
   return fetch(`${url_base}/assets/${coin}`, {
-    mode: "cors",
     method: "GET",
   })
     .then((res) => res.json())
@@ -39,7 +37,7 @@ async function getMarkets(coin) {
 }
 
 async function getExchange(id) {
-  return fetch(`${url}/exchanges/${id}`)
+  return fetch(`${url_base}/exchanges/${id}`)
     .then((res) => res.json())
     .then((res) => res.data);
 }
